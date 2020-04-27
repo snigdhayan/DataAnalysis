@@ -26,9 +26,7 @@ breast_dataset.columns = features_labels
 breast_dataset['label'].replace(0, 'Benign',inplace=True)
 breast_dataset['label'].replace(1, 'Malignant',inplace=True)
 
-
-# Normalize data by setting mean to 0 and standard deviation to 1
-
+# Standardize data by setting mean to 0 and standard deviation to 1
 
 from sklearn.preprocessing import StandardScaler
 
@@ -57,11 +55,13 @@ principal_breast_Df = pd.DataFrame(data = principalComponents_breast, columns = 
 
 # Visualize results
 
-print('Tail of principal components: {}\n'.format(principal_breast_Df.tail()))
+data = {"Principal component":pc_labels, "Explained variance ratio":pca_breast.explained_variance_ratio_}
+pca_data = pd.DataFrame(data=data).sort_values(by=["Explained variance ratio"],ascending=False)
+print('Explained variance ratio per principal component:\n{}\n'.format(pca_data))
 
-print('Explained variation per principal component: {}\n'.format(pd.DataFrame(pca_breast.explained_variance_ratio_,pc_labels)))
 
-# print('30 eigenvalues: {}'.format(pca_breast.components_))
+# print('Tail of principal components: {}\n'.format(principal_breast_Df.tail()))
+# print('30 eigenvalues: {}'.format(eig_vals))
 
 
 # Plot the top two principal components

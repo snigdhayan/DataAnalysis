@@ -24,8 +24,7 @@ features_labels = np.append(features,'label')
 breast_dataset.columns = features_labels
 
 
-# Normalize data by setting mean to 0 and standard deviation to 1
-
+# Standardize data by setting mean to 0 and standard deviation to 1
 
 from sklearn.preprocessing import StandardScaler
 
