@@ -43,32 +43,37 @@ X_new = selector.fit_transform(X_norm, Y)
 feature_support = selector.get_support()
 selected_features = X.loc[:,feature_support].columns
 
+# Transformed dataset with reduced features as dataframe
+
 breast_Df = pd.DataFrame(data = X_new, columns = selected_features)
 
 
 # Visualize results
 
-print(pd.DataFrame(selector.scores_, features))
-print('\n{} Selected Features: {}\n'.format(len(selected_features.tolist()), selected_features.tolist()))
+n_selected = len(selected_features)
+data = {"Feature": features, "Score": selector.scores_}
+feature_score = pd.DataFrame(data=data).sort_values(by=["Score"],ascending=False)
+print('\n{} Selected Features:\n{}\n'.format(n_selected,feature_score.head(n_selected)))
+
+
 
 # Plot the top two features
-
 
 import matplotlib.pyplot as plt
 plt.figure()
 plt.figure(figsize=(10,10))
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=14)
-plt.xlabel(selected_features[len(selected_features)-1],fontsize=20)
-plt.ylabel(selected_features[len(selected_features)-2],fontsize=20)
+plt.xlabel(feature_score.iloc[0,0],fontsize=20)
+plt.ylabel(feature_score.iloc[1,0],fontsize=20)
 plt.title("Feature Selection of Breast Cancer Dataset",fontsize=20)
 targets = [0, 1]
 legends = ['Benign', 'Malignant']
 colors = ['g', 'r']
 for target, color in zip(targets,colors):
     indicesToKeep = breast_dataset['label'] == target
-    plt.scatter(breast_Df.loc[indicesToKeep, selected_features[len(selected_features)-1]]
-               , breast_Df.loc[indicesToKeep, selected_features[len(selected_features)-2]], c = color, s = 50)
+    plt.scatter(breast_Df.loc[indicesToKeep, feature_score.iloc[0,0]]
+               , breast_Df.loc[indicesToKeep, feature_score.iloc[1,0]], c = color, s = 50)
 
 plt.legend(legends,prop={'size': 15})
 
