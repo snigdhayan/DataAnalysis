@@ -31,12 +31,9 @@ breast_dataset['label'].replace(1, 'Malignant',inplace=True)
 
 
 from sklearn.preprocessing import StandardScaler
-X = breast_dataset.loc[:, features].values
-X_norm = StandardScaler().fit_transform(X)
 
-# feat_cols = ['feature'+str(i) for i in range(x.shape[1])]
-# normalised_breast = pd.DataFrame(x,columns=feat_cols)
-# normalised_breast.tail()
+X, Y = breast_dataset.drop(columns='label'), breast_dataset['label']
+X_norm = StandardScaler().fit_transform(X)
 
 
 # PCA, covariance matrix and eigenvalues/eigenvectors of covariance matrix
@@ -44,7 +41,7 @@ X_norm = StandardScaler().fit_transform(X)
 
 from sklearn.decomposition import PCA
 pca_breast = PCA(n_components=0.9)
-principalComponents_breast = pca_breast.fit_transform(X_norm)
+principalComponents_breast = pca_breast.fit_transform(X_norm,Y)
 
 # cov = pca_breast.get_covariance()
 # eig_vals, eig_vecs = np.linalg.eig(cov)
@@ -62,7 +59,7 @@ principal_breast_Df = pd.DataFrame(data = principalComponents_breast, columns = 
 
 print('Tail of principal components: {}\n'.format(principal_breast_Df.tail()))
 
-print('Explained variation per principal component: {}\n'.format(pca_breast.explained_variance_ratio_))
+print('Explained variation per principal component: {}\n'.format(pd.DataFrame(pca_breast.explained_variance_ratio_,pc_labels)))
 
 # print('30 eigenvalues: {}'.format(pca_breast.components_))
 
