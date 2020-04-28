@@ -51,7 +51,14 @@ pc_labels = []
 for i in range(0,pca_breast.singular_values_.size):
     pc_labels.append("principal component " + str(i+1)) 
     
+
+
+# Export transformed dataset with principal components and labels
+
 principal_breast_Df = pd.DataFrame(data = principalComponents_breast, columns = pc_labels)
+principal_breast_Df['label'] = Y
+# principal_breast_Df.to_csv('pc_breast_cancer_dataset.csv',index=False)
+
 
 # Visualize results
 

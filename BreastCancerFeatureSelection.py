@@ -42,10 +42,10 @@ X_new = selector.fit_transform(X_norm, Y)
 feature_support = selector.get_support()
 selected_features = X.loc[:,feature_support].columns
 
-# Transformed dataset with reduced features as dataframe
+# Export transformed dataset with reduced features as dataframe
 
 breast_Df = pd.DataFrame(data = X_new, columns = selected_features)
-
+# breast_Df.to_csv('breast_cancer_dataset.csv',index=False)
 
 # Visualize results
 
