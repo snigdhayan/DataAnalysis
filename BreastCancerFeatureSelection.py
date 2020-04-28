@@ -45,6 +45,7 @@ selected_features = X.loc[:,feature_support].columns
 # Export transformed dataset with reduced features as dataframe
 
 breast_Df = pd.DataFrame(data = X_new, columns = selected_features)
+breast_Df['label'] = Y
 # breast_Df.to_csv('breast_cancer_dataset.csv',index=False)
 
 # Visualize results
