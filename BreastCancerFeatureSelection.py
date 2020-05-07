@@ -1,6 +1,4 @@
 # coding: utf-8
-# Created on Sat Apr 25 21:35:02 2020
-
 
 # Gather breast cancer data
 
@@ -23,6 +21,10 @@ features = breast.feature_names
 features_labels = np.append(features,'label')
 breast_dataset.columns = features_labels
 
+# Replace 0,1 label by medical terminology (Benign = cancer false, Malignant = cancer true)
+
+# breast_dataset['label'].replace(0, 'Benign',inplace=True)
+# breast_dataset['label'].replace(1, 'Malignant',inplace=True)
 
 # Standardize data by setting mean to 0 and standard deviation to 1
 
