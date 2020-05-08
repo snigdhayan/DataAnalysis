@@ -1,4 +1,4 @@
-# Preprocessing
+# Feature Engineering
 It tried out the following options with the intention of reducing input features (dimension reduction).
 
 1. Sklearn PCA - https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA
