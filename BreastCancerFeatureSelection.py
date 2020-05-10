@@ -46,14 +46,14 @@ selected_features = X.loc[:,feature_support].columns
 
 # Prepare and export transformed dataset with reduced features as dataframe
 
-breast_Df = pd.DataFrame(data = X_new, columns = selected_features)
-breast_Df['label'] = Y
-# breast_Df.to_csv('breast_cancer_dataset.csv',index=False)
+breast_cancer_df = pd.DataFrame(data = X_new, columns = selected_features)
+breast_cancer_df['label'] = Y
+# breast_cancer_df.to_csv('breast_cancer_dataset.csv',index=False)
 
 # Visualize results
 
 n_selected = len(selected_features)
-data = {"Feature": features, "Score": selector.scores_}
+data = {"Feature": features, "Score": np.around(selector.scores_,2)}
 feature_score = pd.DataFrame(data=data).sort_values(by=["Score"],ascending=False)
 print('\n{} Selected Features:\n{}\n'.format(n_selected,feature_score.head(n_selected)))
 
@@ -74,8 +74,8 @@ legends = ['Benign', 'Malignant']
 colors = ['g', 'r']
 for target, color in zip(targets,colors):
     indicesToKeep = breast_dataset['label'] == target
-    plt.scatter(breast_Df.loc[indicesToKeep, feature_score.iloc[0,0]]
-               , breast_Df.loc[indicesToKeep, feature_score.iloc[1,0]], c = color, s = 50)
+    plt.scatter(breast_cancer_df.loc[indicesToKeep, feature_score.iloc[0,0]]
+               , breast_cancer_df.loc[indicesToKeep, feature_score.iloc[1,0]], c = color, s = 50)
 
 plt.legend(legends,prop={'size': 15})
 

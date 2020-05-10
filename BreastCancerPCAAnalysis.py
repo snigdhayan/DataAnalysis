@@ -38,31 +38,32 @@ X_norm = StandardScaler().fit_transform(X)
 
 
 from sklearn.decomposition import PCA
-pca_breast = PCA(n_components=0.9)
-principalComponents_breast = pca_breast.fit_transform(X_norm,Y)
+pca_breast_cancer = PCA(n_components=0.9)
+principal_components = pca_breast_cancer.fit_transform(X_norm,Y)
 
-# cov = pca_breast.get_covariance()
+# cov = pca_breast_cancer.get_covariance()
 # eig_vals, eig_vecs = np.linalg.eig(cov)
 
 # Prepare and export transformed dataset with principal components and labels
 
 pc_labels = []
-for i in range(0,pca_breast.singular_values_.size):
+for i in range(0,pca_breast_cancer.singular_values_.size):
     pc_labels.append("principal component " + str(i+1)) 
 
-principal_breast_Df = pd.DataFrame(data = principalComponents_breast, columns = pc_labels)
-principal_breast_Df['label'] = Y
-# principal_breast_Df.to_csv('pc_breast_cancer_dataset.csv',index=False)
+principal_components_df = pd.DataFrame(data = principal_components, columns = pc_labels)
+principal_components_df['label'] = Y
+# principal_components_df.to_csv('pc_breast_cancer_dataset.csv',index=False)
 
 
 # Visualize results
 
-data = {"Principal component":pc_labels, "Explained variance ratio":pca_breast.explained_variance_ratio_}
-pca_data = pd.DataFrame(data=data).sort_values(by=["Explained variance ratio"],ascending=False)
-print('Explained variance ratio per principal component:\n{}\n'.format(pca_data))
+data = {"Principal component":pc_labels, 
+        "Explained variance ratio":np.around(pca_breast_cancer.explained_variance_ratio_,2)}
+pca_result = pd.DataFrame(data=data).sort_values(by=["Explained variance ratio"],ascending=False)
+print('Explained variance ratio per principal component:\n{}\n'.format(pca_result))
 
 
-# print('Tail of principal components: {}\n'.format(principal_breast_Df.tail()))
+# print('Tail of principal components: {}\n'.format(principal_components_df.tail()))
 # print('30 eigenvalues: {}'.format(eig_vals))
 
 
@@ -81,8 +82,8 @@ targets = ['Benign', 'Malignant']
 colors = ['g', 'r']
 for target, color in zip(targets,colors):
     indicesToKeep = breast_dataset['label'] == target
-    plt.scatter(principal_breast_Df.loc[indicesToKeep, 'principal component 1']
-               , principal_breast_Df.loc[indicesToKeep, 'principal component 2'], c = color, s = 50)
+    plt.scatter(principal_components_df.loc[indicesToKeep, 'principal component 1']
+               , principal_components_df.loc[indicesToKeep, 'principal component 2'], c = color, s = 50)
 
 plt.legend(targets,prop={'size': 15})
 
