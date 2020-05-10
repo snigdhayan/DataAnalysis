@@ -59,7 +59,7 @@ print('\n{} Selected Features:\n{}\n'.format(n_selected,feature_score.head(n_sel
 
 
 
-# Plot the top two features
+# Plot the top two features and color according to labels
 
 import matplotlib.pyplot as plt
 plt.figure()

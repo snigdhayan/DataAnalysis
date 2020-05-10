@@ -67,7 +67,7 @@ print('Explained variance ratio per principal component:\n{}\n'.format(pca_resul
 # print('30 eigenvalues: {}'.format(eig_vals))
 
 
-# Plot the top two principal components
+# Plot the top two principal components and color according to labels
 
 
 import matplotlib.pyplot as plt

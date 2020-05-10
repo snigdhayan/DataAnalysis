@@ -75,7 +75,7 @@ def plot_dendrogram(model, **kwargs):
     # Plot the corresponding dendrogram
     dendrogram(linkage_matrix, **kwargs)
 
-# plot the top two levels of the dendrogram
+# Draw the top two levels of the dendrogram of agglomerated features
 
 import matplotlib.pyplot as plt
 
