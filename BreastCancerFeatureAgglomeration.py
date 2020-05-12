@@ -44,8 +44,13 @@ agglomerate = cluster.FeatureAgglomeration(n_clusters=None,
                                            linkage="ward",
                                            affinity="euclidean",
                                            compute_full_tree=True,
-                                           distance_threshold=0.2)
+                                           distance_threshold=40)
 X_transformed = agglomerate.fit_transform(X_norm, Y)
+
+data = {"Feature": features, "Cluster":agglomerate.labels_}
+
+cluster_labels = pd.DataFrame(data).sort_values(by=["Cluster"])
+print(cluster_labels)
 
 # X_restored = pd.DataFrame(agglomerate.inverse_transform(X_transformed))
 
