@@ -49,11 +49,11 @@ print('Time elapsed: {} seconds'.format(round(time.time()-time_start,2)))
 
 # Prepare the result of t-SNE as dataframe with labels
 
-pc_labels = []
+tsne_labels = []
 for i in range(0,n_comp):
-    pc_labels.append("tsne_" + str(i+1)) 
+    tsne_labels.append("tsne_" + str(i+1)) 
 
-result_tsne_df = pd.DataFrame(data = result_tsne, columns = pc_labels)
+result_tsne_df = pd.DataFrame(data = result_tsne, columns = tsne_labels)
 result_tsne_df['label'] = Y
 
 
