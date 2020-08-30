@@ -43,7 +43,7 @@ import time
 time_start = time.time()
 n_comp = 2
 
-result_tsne = TSNE(n_components=n_comp,perplexity=40,n_iter=500,random_state=8).fit_transform(X_norm)
+result_tsne = TSNE(n_components=n_comp,perplexity=40,n_iter=400,random_state=8).fit_transform(X_norm)
 
 print('Time elapsed: {} seconds'.format(round(time.time()-time_start,2)))
 
@@ -72,8 +72,10 @@ targets = ['Benign', 'Malignant']
 colors = ['g', 'r']
 for target, color in zip(targets,colors):
     indicesToKeep = breast_dataset['label'] == target
-    plt.scatter(result_tsne_df.loc[indicesToKeep, 'tsne_1']
-                , result_tsne_df.loc[indicesToKeep, 'tsne_2'], c = color, s = 50)
+    plt.scatter(result_tsne_df.loc[indicesToKeep, 'tsne_1'],
+                result_tsne_df.loc[indicesToKeep, 'tsne_2'], 
+                c = color, 
+                s = 50)
 
 plt.legend(targets,prop={'size': 15})
 
