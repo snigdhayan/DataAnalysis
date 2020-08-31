@@ -82,8 +82,10 @@ targets = ['Benign', 'Malignant']
 colors = ['g', 'r']
 for target, color in zip(targets,colors):
     indicesToKeep = breast_dataset['label'] == target
-    plt.scatter(principal_components_df.loc[indicesToKeep, 'principal component 1']
-               , principal_components_df.loc[indicesToKeep, 'principal component 2'], c = color, s = 50)
+    plt.scatter(principal_components_df.loc[indicesToKeep, 'principal component 1'],
+                principal_components_df.loc[indicesToKeep, 'principal component 2'], 
+                c = color, 
+                s = 50)
 
 plt.legend(targets,prop={'size': 15})
 
