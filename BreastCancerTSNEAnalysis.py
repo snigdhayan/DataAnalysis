@@ -41,9 +41,13 @@ from sklearn.manifold import TSNE
 import time
 
 time_start = time.time()
-n_comp = 2
 
-result_tsne = TSNE(n_components=n_comp,perplexity=40,n_iter=400,random_state=8).fit_transform(X_norm)
+n_comp = 2
+tsne_breast_cancer = TSNE(n_components=n_comp,
+                          perplexity=40,
+                          n_iter=400,
+                          random_state=8)
+result_tsne = tsne_breast_cancer.fit_transform(X_norm)
 
 print('Time elapsed: {} seconds'.format(round(time.time()-time_start,2)))
 
