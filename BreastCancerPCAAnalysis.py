@@ -38,8 +38,15 @@ X_norm = StandardScaler().fit_transform(X)
 
 
 from sklearn.decomposition import PCA
-pca_breast_cancer = PCA(n_components=0.9)
+import time
+
+time_start = time.time()
+
+n_comp = 0.9
+pca_breast_cancer = PCA(n_components=n_comp)
 principal_components = pca_breast_cancer.fit_transform(X_norm,Y)
+
+print('Time elapsed: {} seconds'.format(round(time.time()-time_start,4)))
 
 # cov = pca_breast_cancer.get_covariance()
 # eig_vals, eig_vecs = np.linalg.eig(cov)
