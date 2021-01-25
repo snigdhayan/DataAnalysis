@@ -7,9 +7,7 @@ breast = load_breast_cancer()
 breast_data = breast.data
 breast_labels = breast.target
 
-
 # Prepare data as pandas dataframe
-
 
 import numpy as np
 labels = np.reshape(breast_labels,(569,1))
@@ -32,7 +30,6 @@ from sklearn.preprocessing import StandardScaler
 
 X, Y = breast_dataset.drop(columns='label'), breast_dataset['label']
 X_norm = StandardScaler().fit_transform(X)
-
 
 # Apply random projection to dataset with target space dimension = 2
 # The underlying theory relies on the Johnson-Lindenstrauss lemma
@@ -79,9 +76,4 @@ for target, color in zip(targets,colors):
                 s = 50)
 
 plt.legend(targets,prop={'size': 15})
-
-plt.show()
-
-
-
 
