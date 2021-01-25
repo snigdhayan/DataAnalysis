@@ -31,7 +31,7 @@ from sklearn.preprocessing import StandardScaler
 X, Y = breast_dataset.drop(columns='label'), breast_dataset['label']
 X_norm = StandardScaler().fit_transform(X)
 
-# Apply random projection to dataset with target space dimension = 2
+# Apply random projection to dataset using sparse random matrices
 # The underlying theory relies on the Johnson-Lindenstrauss lemma
 
 from sklearn import random_projection
