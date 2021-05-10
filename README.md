@@ -1,4 +1,4 @@
-# FeatureEngineering
+# DataAnalysis
 I tried out the following options with the intention of dimension reduction/data visualization.
 
 1. Sklearn `PCA` - https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA
