@@ -1,5 +1,5 @@
 # DataAnalysis
-I tried out the following techniques from the `scikit-learn` library that fall within the purview of feature engineering and data visualization:
+In the `DataAnalysis` directory I tried out the following techniques from the `scikit-learn` library that fall within the purview of feature engineering and data visualization:
 
 1. Sklearn `PCA` - https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA
 2. Sklearn `feature selection` via `SelectPercentile` - https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectPercentile.html#sklearn.feature_selection.SelectPercentile
